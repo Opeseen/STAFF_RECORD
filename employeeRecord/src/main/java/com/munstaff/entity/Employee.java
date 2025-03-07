@@ -1,4 +1,4 @@
-package com.munstaff.model;
+package com.munstaff.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

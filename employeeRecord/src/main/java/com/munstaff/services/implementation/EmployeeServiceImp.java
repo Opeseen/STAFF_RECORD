@@ -1,16 +1,17 @@
-package com.munstaff.services;
+package com.munstaff.services.implementation;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.munstaff.model.Employee;
-import com.munstaff.model.PayGroup;
+import com.munstaff.entity.Employee;
+import com.munstaff.entity.PayGroup;
 import com.munstaff.repository.EmployeeRepository;
 import com.munstaff.repository.PayGroupRepository;
 import com.munstaff.response.error.NotFoundException;
 import com.munstaff.response.error.ResourceAlreadyExist;
+import com.munstaff.services.EmployeeService;
 
 import lombok.AllArgsConstructor;
 

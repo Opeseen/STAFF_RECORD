@@ -6,10 +6,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.modelmapper.ModelMapper;
+
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-public class ProjectSecurityConfig {
+public class ProjectConfig {
   @Bean
   SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception{
     http
@@ -18,7 +20,7 @@ public class ProjectSecurityConfig {
       .authorizeHttpRequests((requests) -> requests
         .requestMatchers("/api/employee/**").authenticated()
         .requestMatchers("/api/paygroup/**").authenticated()
-        .requestMatchers("/h2/**", "/error/**").permitAll()
+        .requestMatchers("/h2/**", "/error/**", "/api/register").permitAll()
     );
     http.formLogin(withDefaults());
     http.httpBasic(withDefaults());
@@ -28,6 +30,11 @@ public class ProjectSecurityConfig {
   @Bean
   public PasswordEncoder passwordEncoder(){
     return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+  }
+
+  @Bean
+  public ModelMapper modelMapper(){
+    return new ModelMapper();
   }
 
 }

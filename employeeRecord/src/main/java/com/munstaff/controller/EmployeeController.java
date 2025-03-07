@@ -9,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import lombok.AllArgsConstructor;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.munstaff.model.Employee;
-import com.munstaff.model.PayGroup;
+import com.munstaff.entity.Employee;
+import com.munstaff.entity.PayGroup;
 import com.munstaff.response.Constant.ConstantResponse;
 import com.munstaff.response.success.SuccessResponse;
 import com.munstaff.services.EmployeeService;

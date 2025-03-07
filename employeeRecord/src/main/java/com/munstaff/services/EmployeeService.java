@@ -2,8 +2,8 @@ package com.munstaff.services;
 
 import java.util.List;
 
-import com.munstaff.model.Employee;
-import com.munstaff.model.PayGroup;
+import com.munstaff.entity.Employee;
+import com.munstaff.entity.PayGroup;
 
 public interface EmployeeService {
   Employee saveEmployee(Employee staff);

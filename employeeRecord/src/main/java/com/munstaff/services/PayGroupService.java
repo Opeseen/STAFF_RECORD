@@ -3,8 +3,8 @@ package com.munstaff.services;
 import java.util.List;
 import java.util.Set;
 
-import com.munstaff.model.Employee;
-import com.munstaff.model.PayGroup;
+import com.munstaff.entity.Employee;
+import com.munstaff.entity.PayGroup;
 
 public interface PayGroupService {
   PayGroup savePayGroup(PayGroup payGroup);

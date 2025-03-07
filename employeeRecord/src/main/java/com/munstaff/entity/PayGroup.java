@@ -1,4 +1,4 @@
-package com.munstaff.model;
+package com.munstaff.entity;
 
 import java.math.BigDecimal;
 import java.util.Set;

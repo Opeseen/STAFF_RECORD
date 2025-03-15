@@ -16,15 +16,12 @@ import com.munstaff.exceptionHandling.CustomBasicAuthEntryPoint;
 import org.modelmapper.ModelMapper;
 
 import static org.springframework.security.config.Customizer.withDefaults;
-
-@Profile("!prod")
+@Profile("prod")
 @Configuration
-public class ProjectConfig {
+public class ProjectConfigProd {
   @Bean
   SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception{
     http
-      .sessionManagement(smc -> smc.invalidSessionUrl("/invalidSession").maximumSessions(5))
-      .requiresChannel(rcc -> rcc.anyRequest().requiresInsecure()) // Only HTTP
       .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
       .csrf(AbstractHttpConfigurer::disable)
       .authorizeHttpRequests((requests) -> requests
@@ -35,7 +32,6 @@ public class ProjectConfig {
     http.formLogin(withDefaults());
     http.httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthEntryPoint()));
     http.exceptionHandling(ehc -> ehc.accessDeniedHandler(new CustomAccessDeniedHandler()));
-
     return http.build();
   }
 

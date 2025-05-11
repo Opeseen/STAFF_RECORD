@@ -13,15 +13,15 @@ public class SuccessResponse {
   private Boolean success;
   private Number result;
   private Object message;
-  private Object details;
+  private Object data;
   private LocalDateTime timestamp;
 
-  public SuccessResponse(Boolean success, Number result, Object message, Object details) {
+  public SuccessResponse(Boolean success, Number result, Object message, Object data) {
     super();
     this.success = success;
     this.result = result;
     this.message = message;
-    this.details = details;
+    this.data = data;
     this.timestamp = LocalDateTime.now();
   };
 };

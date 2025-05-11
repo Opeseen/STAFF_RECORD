@@ -13,6 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import com.munstaff.exceptionHandling.CustomAccessDeniedHandler;
 import com.munstaff.exceptionHandling.CustomBasicAuthEntryPoint;
 
+
 import org.modelmapper.ModelMapper;
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -22,12 +23,15 @@ public class ProjectConfigProd {
   @Bean
   SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception{
     http
+      .cors(cors -> cors.configurationSource(new CorsConfig()))
+      .requiresChannel(rcc -> rcc.anyRequest().requiresInsecure()) 
+      .sessionManagement(smc -> smc.invalidSessionUrl("/invalidSession").maximumSessions(5))
       .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-      .csrf(AbstractHttpConfigurer::disable)
+      // .csrf(AbstractHttpConfigurer::disable)
       .authorizeHttpRequests((requests) -> requests
         .requestMatchers("/api/employee/**").authenticated()
         .requestMatchers("/api/paygroup/**").authenticated()
-        .requestMatchers("/h2/**", "/error/**", "/api/register").permitAll()
+        .requestMatchers("/h2/**", "/error/**", "/api/register", "/invalidSession").permitAll()
     );
     http.formLogin(withDefaults());
     http.httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthEntryPoint()));

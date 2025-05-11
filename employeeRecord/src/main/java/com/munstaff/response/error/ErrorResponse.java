@@ -12,14 +12,14 @@ public class ErrorResponse {
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
   private Boolean error;
   private Object message;
-  private Object details;
+  private Object path;
   private LocalDateTime timestamp;
 
-  public ErrorResponse(Boolean error, Object message, Object details) {
+  public ErrorResponse(Boolean error, Object message, Object path) {
     super();
     this.error = error;
     this.message = message;
-    this.details = details;
+    this.path = path;
     this.timestamp = LocalDateTime.now();
   };
 }

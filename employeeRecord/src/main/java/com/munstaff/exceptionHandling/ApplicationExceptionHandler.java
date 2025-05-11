@@ -24,7 +24,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
   @ExceptionHandler({ ResourceAlreadyExist.class })
   public ResponseEntity<Object> handleEntityExistException(RuntimeException ex, WebRequest request) {
     ErrorResponse errorDetails = new ErrorResponse(true, ex.getMessage(), request.getDescription(false));
-    return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);
   };
 
   @ExceptionHandler({DataIntegrityViolationException.class, IllegalStateException.class})
